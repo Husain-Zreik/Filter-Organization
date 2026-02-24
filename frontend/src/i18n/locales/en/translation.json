@@ -1,0 +1,325 @@
+{
+  "common": {
+    "readMore": "Read more",
+    "viewAll": "View all",
+    "download": "Download",
+    "downloadReport": "Download Report",
+    "share": "Share",
+    "all": "All",
+    "source": "Source",
+    "percentage": "Percentage",
+    "reset": "Reset",
+    "edit": "Edit",
+    "delete": "Delete",
+    "save": "Save",
+    "cancel": "Cancel",
+    "addNew": "Add New",
+    "noResults": "No results found"
+  },
+  "status": {
+    "confirmed": "Confirmed",
+    "false": "False",
+    "unverified": "Unverified"
+  },
+  "categories": {
+    "health": "Health",
+    "security": "Security",
+    "economy": "Economy",
+    "education": "Education",
+    "tech": "Technology",
+    "media": "Media",
+    "training": "Training",
+    "culture": "Culture",
+    "periodic": "Periodic Reports"
+  },
+  "announcement": {
+    "ready": "Operational",
+    "emergency": "Emergency Level: 2",
+    "date": "Monday, 24 February 2026",
+    "refresh": "Refresh"
+  },
+  "nav": {
+    "home": "Home",
+    "rumors": "Rumors",
+    "news": "News",
+    "reports": "Reports",
+    "archive": "Archive",
+    "team": "Team",
+    "more": "More",
+    "filterTool": "Filter Tool",
+    "filterToolFull": "Advanced Filter Tool",
+    "search": "Search",
+    "notifications": "Notifications",
+    "menu": "Menu"
+  },
+  "footer": {
+    "description": "The official platform for verifying rumors and misinformation. We work to spread truth and protect society.",
+    "pages": "Pages",
+    "tools": "Tools",
+    "newsletter": "Newsletter",
+    "newsletterDesc": "Subscribe to receive verification updates and the latest reports directly in your inbox.",
+    "emailPlaceholder": "Your email address",
+    "subscribe": "Subscribe",
+    "copyright": "© 2026 Filter. All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Use"
+  },
+  "home": {
+    "badge": "Official Verification Platform",
+    "titleLine1": "Fight Rumors",
+    "titleLine2": "With Truth",
+    "subtitle": "Filter provides instant, accurate tools to verify information and rumors from trusted official sources.",
+    "cta": "Start Verifying Now",
+    "ctaSecondary": "Discover More",
+    "stat1Value": "50+",
+    "stat1Label": "Updated Reports",
+    "stat2Value": "100%",
+    "stat2Label": "Official Sources",
+    "stat3Value": "Live",
+    "stat3Label": "Instant Alerts",
+    "latestTitle": "Latest Content",
+    "latestSubtitle": "Rumors, news, and updated reports",
+    "quickLinksTitle": "Quick Links"
+  },
+  "filter": {
+    "title": "Advanced Filter Tool",
+    "subtitle": "Search and filter content by type, status, and category",
+    "typeLabel": "Type",
+    "statusLabel": "Status",
+    "categoryLabel": "Category",
+    "dateLabel": "Date",
+    "applyBtn": "Apply Filter",
+    "hint": "Set the filter criteria above then click \"Apply Filter\" to view results.",
+    "results": "Found {{count}} result(s) matching your search criteria.",
+    "noResultsTitle": "No results match your search criteria",
+    "noResultsHint": "Try changing the filters or resetting them",
+    "types": {
+      "rumor": "Rumor",
+      "news": "News",
+      "report": "Report"
+    }
+  },
+  "rumors": {
+    "pageTitle": "Rumors",
+    "subtitle": "Monitoring and verifying circulating rumors — updated continuously",
+    "filterAll": "All",
+    "filterFalse": "False",
+    "filterConfirmed": "Confirmed",
+    "filterUnverified": "Unverified",
+    "summaryTitle": "Quick Summary",
+    "totalLabel": "Total Rumors",
+    "falseLabel": "False",
+    "confirmedLabel": "Confirmed",
+    "unverifiedLabel": "Unverified",
+    "reportTitle": "Report a Rumor",
+    "reportDesc": "If you come across suspicious information or an unverified rumor, report it to us and we will verify it.",
+    "reportBtn": "Report a Rumor",
+    "empty": "No rumors in this category",
+    "verifiedAt": "Verified at"
+  },
+  "news": {
+    "pageTitle": "News",
+    "subtitle": "Latest news and official statements",
+    "breaking": "Breaking",
+    "live": "Live",
+    "official": "Official",
+    "tickerTitle": "Latest Updates",
+    "summaryTitle": "Sector Summary",
+    "sectors": {
+      "economy": "Economic Sector",
+      "health": "Health Sector",
+      "security": "Security Sector",
+      "culture": "Cultural Sector"
+    }
+  },
+  "reports": {
+    "pageTitle": "Reports",
+    "subtitle": "Analytical and official reviewed reports available for download",
+    "othersTitle": "Other Reports"
+  },
+  "archive": {
+    "pageTitle": "Archive",
+    "subtitle": "A comprehensive historical record of all processed cases and rumors",
+    "statTotal": "Total Cases",
+    "statTotalSub": "+{{count}} this week",
+    "statConfirmed": "Confirmed Cases",
+    "statConfirmedSub": "{{pct}}% of total",
+    "statFalse": "False Cases",
+    "statFalseSub": "{{pct}}% of total",
+    "tableTitle": "Case History",
+    "colDate": "Date",
+    "colStatus": "Status",
+    "colCategory": "Category",
+    "timelineTitle": "Timeline",
+    "filterTitle": "Filter by Category",
+    "downloadYearTitle": "Download Annual Archive",
+    "downloadBtn": "Download {{year}} Archive",
+    "yearlyTitle": "Annual Archive",
+    "cases": "cases",
+    "falseLabel": "False",
+    "confirmedLabel": "Confirmed",
+    "unverifiedLabel": "Unverified",
+    "downloadReport": "Download Report"
+  },
+  "team": {
+    "pageTitle": "Filter Team",
+    "subtitle": "An elite group of specialists in fact-checking, digital security, and data analysis, working together to ensure information accuracy and protect society from rumors.",
+    "joinBtn": "Join the Team",
+    "contactBtn": "Contact Us",
+    "statMembersLabel": "Team Members",
+    "statReportsValue": "50+",
+    "statReportsLabel": "Completed Reports",
+    "statCheckedValue": "1000+",
+    "statCheckedLabel": "Rumors Verified",
+    "membersTitle": "Team Members"
+  },
+  "more": {
+    "badge": "About the Platform",
+    "title": "Filter — Information Verification Platform",
+    "body": "Filter is the official platform specializing in verifying rumors and misinformation. We rely on trusted official sources and approved scientific methodologies to ensure information accuracy for the public.",
+    "tourBtn": "Start Guided Tour",
+    "contactBtn": "Direct Contact",
+    "infoInstant": "Instant Verification",
+    "infoSources": "Trusted Sources",
+    "infoSearch": "Advanced Search",
+    "infoShare": "Share Results",
+    "howTitle": "How to use the platform?",
+    "howSubtitle": "Three simple steps to verify any information",
+    "policiesTitle": "Policies & Standards"
+  },
+  "admin": {
+    "brand": "Filter Admin",
+    "version": "v{{v}}",
+    "actions": "Actions",
+    "noData": "No data available",
+    "edit": "Edit",
+    "delete": "Delete",
+    "view": "View",
+    "addNew": "Add New",
+    "editItem": "Edit Item",
+    "save": "Save",
+    "saved": "Saved successfully",
+    "saving": "Saving...",
+    "loading": "Loading...",
+    "cancel": "Cancel",
+    "confirmDelete": "Are you sure you want to delete this item?",
+    "messages": {
+      "saveSuccess": "Changes saved successfully.",
+      "deleteSuccess": "Item deleted successfully.",
+      "uploadSuccess": "File uploaded successfully."
+    },
+    "nav": {
+      "dashboard": "Dashboard",
+      "pages": "Pages",
+      "posts": "Posts",
+      "media": "Media",
+      "settings": "Settings"
+    },
+    "topbar": {
+      "title": "Administration",
+      "admin": "Admin"
+    },
+    "col": {
+      "title": "Title",
+      "date": "Date",
+      "status": "Status",
+      "category": "Category",
+      "pages": "Pages",
+      "name": "Name",
+      "role": "Role",
+      "email": "Email"
+    },
+    "table": {
+      "searchPlaceholder": "Search...",
+      "clearFilters": "Clear filters",
+      "resultCount": "{{count}} result(s)",
+      "pageOf": "Page {{page}} of {{total}}",
+      "from": "From date",
+      "to": "To date",
+      "filters": {
+        "status": "Filter by status",
+        "category": "Filter by category",
+        "section": "Filter by section",
+        "mimeType": "Filter by type"
+      }
+    },
+    "dashboard": {
+      "title": "Dashboard",
+      "recentRumors": "Recent Posts"
+    },
+    "contentStatus": {
+      "draft": "Draft",
+      "published": "Published",
+      "scheduled": "Scheduled"
+    },
+    "contentCategories": {
+      "general": "General",
+      "policy": "Policy",
+      "faq": "FAQ",
+      "news": "News",
+      "update": "Update",
+      "announcement": "Announcement"
+    },
+    "form": {
+      "titleEn": "Title (English)",
+      "titleAr": "Title (Arabic)",
+      "slug": "Slug",
+      "publishDate": "Publish Date",
+      "featuredMedia": "Featured Media",
+      "noMedia": "No media selected",
+      "excerptEn": "Excerpt (English)",
+      "excerptAr": "Excerpt (Arabic)",
+      "contentEn": "Content (English)",
+      "contentAr": "Content (Arabic)",
+      "rtlPreview": "Arabic RTL Preview",
+      "rtlPreviewHint": "Arabic content preview appears here."
+    },
+    "pages": {
+      "addTitle": "Add Page",
+      "editTitle": "Edit Page",
+      "viewTitle": "View Page"
+    },
+    "posts": {
+      "addTitle": "Add Post",
+      "editTitle": "Edit Post",
+      "viewTitle": "View Post"
+    },
+    "media": {
+      "dropzone": "Drag and drop files here, or click to select",
+      "dropzoneHint": "Supports: JPG, PNG, WebP, PDF (Max 10 MB)",
+      "upload": "Upload File",
+      "preview": "Media Preview",
+      "fileName": "File Name",
+      "fileType": "Type",
+      "fileSize": "Size",
+      "attachedTo": "Attached To",
+      "notAttached": "Not attached",
+      "image": "Image",
+      "file": "File",
+      "invalidType": "Unsupported file type.",
+      "invalidSize": "File exceeds 10 MB."
+    },
+    "settings": {
+      "addTitle": "Add Setting",
+      "editTitle": "Edit Setting",
+      "viewTitle": "View Setting",
+      "section": "Section",
+      "key": "Key",
+      "valueEn": "Value (English)",
+      "valueAr": "Value (Arabic)"
+    },
+    "settingsSections": {
+      "site": "Site",
+      "announcement": "Announcement",
+      "notifications": "Notifications"
+    },
+    "settingsStatus": {
+      "active": "Active",
+      "inactive": "Inactive"
+    },
+    "validation": {
+      "required": "This field is required.",
+      "slug": "Slug must contain lowercase letters, numbers, and hyphens only."
+    }
+  }
+}

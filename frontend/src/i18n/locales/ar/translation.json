@@ -1,0 +1,245 @@
+{
+  "common": {
+    "readMore": "اقرأ المزيد",
+    "viewAll": "عرض الكل",
+    "download": "تحميل",
+    "downloadReport": "تحميل التقرير",
+    "share": "مشاركة",
+    "all": "الكل",
+    "source": "المصدر",
+    "percentage": "النسبة",
+    "reset": "إعادة تعيين",
+    "edit": "تعديل",
+    "delete": "حذف",
+    "save": "حفظ",
+    "cancel": "إلغاء",
+    "addNew": "إضافة جديد",
+    "noResults": "لا توجد نتائج"
+  },
+  "status": {
+    "confirmed": "مؤكد",
+    "false": "خاطئ",
+    "unverified": "غير مؤكد"
+  },
+  "categories": {
+    "health": "صحة",
+    "security": "أمن",
+    "economy": "اقتصاد",
+    "education": "تعليم",
+    "tech": "تقنية",
+    "media": "إعلام",
+    "training": "تدريب",
+    "culture": "ثقافة",
+    "periodic": "تقارير دورية"
+  },
+  "announcement": {
+    "ready": "جاهز للعمل",
+    "emergency": "حالة الطوارئ: مستوى 2",
+    "date": "الإثنين، 24 فبراير 2026",
+    "refresh": "تحديث الآن"
+  },
+  "nav": {
+    "home": "الرئيسية",
+    "rumors": "الشائعات",
+    "news": "الأخبار",
+    "reports": "التقارير",
+    "archive": "الأرشيف",
+    "team": "الفريق",
+    "more": "المزيد",
+    "filterTool": "أداة الفلترة",
+    "filterToolFull": "أداة الفلترة المتقدمة",
+    "search": "بحث",
+    "notifications": "الإشعارات",
+    "menu": "القائمة"
+  },
+  "footer": {
+    "description": "المنصة الرسمية للتحقق من الشائعات والمعلومات المضللة. نعمل على نشر الحقيقة وحماية المجتمع.",
+    "pages": "الصفحات",
+    "tools": "الأدوات",
+    "newsletter": "النشرة الإخبارية",
+    "newsletterDesc": "اشترك لاستقبال تحديثات التحقق وأحدث التقارير مباشرة في بريدك.",
+    "emailPlaceholder": "بريدك الإلكتروني",
+    "subscribe": "اشتراك",
+    "copyright": "© 2026 فلتر. جميع الحقوق محفوظة.",
+    "privacy": "سياسة الخصوصية",
+    "terms": "شروط الاستخدام"
+  },
+  "home": {
+    "badge": "المنصة الرسمية للتحقق",
+    "titleLine1": "حارب الشائعات",
+    "titleLine2": "بالحقيقة",
+    "subtitle": "منصة فلتر توفّر لك أدوات التحقق من المعلومات والشائعات بشكل فوري ودقيق من مصادر موثوقة ورسمية.",
+    "cta": "ابدأ التحقق الآن",
+    "ctaSecondary": "اكتشف المزيد",
+    "stat1Value": "+50",
+    "stat1Label": "تقرير محدّث",
+    "stat2Value": "100%",
+    "stat2Label": "مصادر رسمية",
+    "stat3Value": "فوري",
+    "stat3Label": "تنبيهات لحظية",
+    "latestTitle": "أحدث المحتوى",
+    "latestSubtitle": "شائعات، أخبار، وتقارير محدّثة",
+    "quickLinksTitle": "روابط سريعة"
+  },
+  "filter": {
+    "title": "أداة الفلترة المتقدمة",
+    "subtitle": "ابحث وصفّي المحتوى حسب النوع والحالة والتصنيف",
+    "typeLabel": "النوع",
+    "statusLabel": "الحالة",
+    "categoryLabel": "التصنيف",
+    "dateLabel": "التاريخ",
+    "applyBtn": "تطبيق الفلتر",
+    "hint": "اضبط معايير الفلتر أعلاه ثم اضغط على \"تطبيق الفلتر\" لعرض النتائج.",
+    "results": "تم العثور على {{count}} نتيجة بناءً على معايير البحث المحددة.",
+    "noResultsTitle": "لا توجد نتائج تطابق معايير البحث",
+    "noResultsHint": "جرّب تغيير الفلاتر أو إعادة تعيينها",
+    "types": {
+      "rumor": "شائعة",
+      "news": "خبر",
+      "report": "تقرير"
+    }
+  },
+  "rumors": {
+    "pageTitle": "الشائعات",
+    "subtitle": "رصد وتحقق من الشائعات المتداولة — محدّث باستمرار",
+    "filterAll": "الكل",
+    "filterFalse": "خاطئة",
+    "filterConfirmed": "مؤكدة",
+    "filterUnverified": "غير مؤكدة",
+    "summaryTitle": "ملخص سريع",
+    "totalLabel": "إجمالي الشائعات",
+    "falseLabel": "خاطئة",
+    "confirmedLabel": "مؤكدة",
+    "unverifiedLabel": "غير مؤكدة",
+    "reportTitle": "أبلغ عن شائعة",
+    "reportDesc": "إذا صادفت معلومة مشبوهة أو شائعة غير موثوقة، أبلغنا عنها وسنتولى التحقق منها.",
+    "reportBtn": "إبلاغ عن شائعة",
+    "empty": "لا توجد شائعات في هذه الفئة",
+    "verifiedAt": "تم التحقق"
+  },
+  "news": {
+    "pageTitle": "الأخبار",
+    "subtitle": "أحدث الأخبار والبيانات الرسمية",
+    "breaking": "عاجل",
+    "live": "مباشر",
+    "official": "رسمي",
+    "tickerTitle": "آخر التحديثات",
+    "summaryTitle": "ملخص قطاعي",
+    "sectors": {
+      "economy": "القطاع الاقتصادي",
+      "health": "القطاع الصحي",
+      "security": "القطاع الأمني",
+      "culture": "القطاع الثقافي"
+    }
+  },
+  "reports": {
+    "pageTitle": "التقارير",
+    "subtitle": "تقارير تحليلية ورسمية محكّمة قابلة للتحميل",
+    "othersTitle": "تقارير أخرى"
+  },
+  "archive": {
+    "pageTitle": "الأرشيف",
+    "subtitle": "سجل تاريخي شامل لجميع القضايا والشائعات التي تمت معالجتها",
+    "statTotal": "إجمالي القضايا",
+    "statTotalSub": "+{{count}} هذا الأسبوع",
+    "statConfirmed": "قضايا مؤكدة",
+    "statConfirmedSub": "{{pct}}% من الإجمالي",
+    "statFalse": "قضايا خاطئة",
+    "statFalseSub": "{{pct}}% من الإجمالي",
+    "tableTitle": "سجل القضايا",
+    "colDate": "التاريخ",
+    "colStatus": "الحالة",
+    "colCategory": "التصنيف",
+    "timelineTitle": "الجدول الزمني",
+    "filterTitle": "تصفية حسب التصنيف",
+    "downloadYearTitle": "تنزيل الأرشيف السنوي",
+    "downloadBtn": "تحميل أرشيف {{year}}",
+    "yearlyTitle": "الأرشيف السنوي",
+    "cases": "قضية",
+    "falseLabel": "خاطئة",
+    "confirmedLabel": "مؤكدة",
+    "unverifiedLabel": "غير مؤكدة",
+    "downloadReport": "تحميل التقرير"
+  },
+  "team": {
+    "pageTitle": "فريق فلتر",
+    "subtitle": "نخبة من المتخصصين في التحقق من المعلومات والأمن الرقمي وتحليل البيانات، يعملون معاً لضمان دقة المعلومات وحماية المجتمع من الشائعات.",
+    "joinBtn": "انضم إلى الفريق",
+    "contactBtn": "تواصل معنا",
+    "statMembersLabel": "عضو في الفريق",
+    "statReportsValue": "+50",
+    "statReportsLabel": "تقرير مكتمل",
+    "statCheckedValue": "+1000",
+    "statCheckedLabel": "شائعة تحقق منها",
+    "membersTitle": "أعضاء الفريق"
+  },
+  "more": {
+    "badge": "عن المنصة",
+    "title": "منصة فلتر للتحقق من المعلومات",
+    "body": "فلتر هي المنصة الرسمية المتخصصة في التحقق من الشائعات والمعلومات المضللة. نعتمد على مصادر رسمية موثوقة ومنهجيات علمية معتمدة لضمان دقة المعلومات المقدمة للجمهور.",
+    "tourBtn": "ابدأ الجولة التعريفية",
+    "contactBtn": "تواصل مباشر",
+    "infoInstant": "تحقق فوري",
+    "infoSources": "مصادر موثوقة",
+    "infoSearch": "بحث متقدم",
+    "infoShare": "مشاركة النتائج",
+    "howTitle": "كيف تستخدم المنصة؟",
+    "howSubtitle": "ثلاث خطوات بسيطة للتحقق من أي معلومة",
+    "policiesTitle": "السياسات والمعايير"
+  },
+  "admin": {
+    "brand": "فلتر - الإدارة",
+    "version": "الإصدار {{v}}",
+    "actions": "الإجراءات",
+    "noData": "لا توجد بيانات",
+    "edit": "تعديل",
+    "delete": "حذف",
+    "addNew": "إضافة جديد",
+    "editItem": "تعديل العنصر",
+    "save": "حفظ",
+    "cancel": "إلغاء",
+    "confirmDelete": "هل أنت متأكد من حذف هذا العنصر؟",
+    "nav": {
+      "dashboard": "لوحة التحكم",
+      "rumors": "الشائعات",
+      "news": "الأخبار",
+      "reports": "التقارير",
+      "team": "الفريق",
+      "media": "الوسائط",
+      "settings": "الإعدادات"
+    },
+    "topbar": {
+      "title": "الإدارة",
+      "admin": "مسؤول"
+    },
+    "col": {
+      "title": "العنوان",
+      "date": "التاريخ",
+      "status": "الحالة",
+      "category": "التصنيف",
+      "pages": "الصفحات",
+      "name": "الاسم",
+      "role": "الدور",
+      "email": "البريد الإلكتروني"
+    },
+    "dashboard": {
+      "title": "لوحة التحكم",
+      "recentRumors": "أحدث الشائعات"
+    },
+    "media": {
+      "dropzone": "اسحب وأفلت الملفات هنا، أو انقر للاختيار",
+      "dropzoneHint": "يدعم: JPG, PNG, WebP (الحد الأقصى: 10 MB)"
+    },
+    "settings": {
+      "siteSection": "معلومات الموقع",
+      "siteName": "اسم الموقع",
+      "siteEmail": "البريد الإلكتروني للتواصل",
+      "siteDesc": "وصف الموقع",
+      "announcementSection": "شريط الإعلانات",
+      "announcementText": "نص الإعلان",
+      "announcementShow": "إظهار شريط الإعلانات",
+      "save": "حفظ الإعدادات",
+      "saved": "تم حفظ الإعدادات بنجاح!"
+    }
+  }
+}

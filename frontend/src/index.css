@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  font-family: 'Cairo', sans-serif;
+}
+
+body {
+  background-color: #fafafa;
+  color: #00334a;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #f7f9fb;
+}
+::-webkit-scrollbar-thumb {
+  background: #00334a;
+  border-radius: 3px;
+}
+
+/* Nav underline animation */
+.nav-link {
+  position: relative;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  right: 0;
+  width: 0;
+  height: 2px;
+  background-color: #42a86c;
+  transition: width 0.3s ease;
+}
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+/* Announcement bar pulse */
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+.pulse-dot {
+  animation: pulse-dot 1.5s ease-in-out infinite;
+}
+
+/* News ticker */
+@keyframes ticker {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-50%); }
+}
