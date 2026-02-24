@@ -3,10 +3,11 @@ import { FileBarChart } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import ReportCard from '../components/features/ReportCard'
 import DetailModal from '../components/ui/DetailModal'
-import { reports } from '../data/mockData'
+import { useAdminData } from '../admin/context/AdminDataContext'
 
 export default function ReportsPage() {
   const { t } = useTranslation()
+  const { reports } = useAdminData()
   const [selected, setSelected] = useState(null)
 
   const featured = reports.find((r) => r.isFeatured)

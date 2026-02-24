@@ -2,6 +2,10 @@ import { NavLink } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import {
   LayoutDashboard,
+  Flag,
+  Newspaper,
+  FileBarChart,
+  Users2,
   FileText,
   NotebookPen,
   Image,
@@ -11,6 +15,10 @@ import {
 
 const navItems = [
   { key: 'admin.nav.dashboard', to: '/admin',          Icon: LayoutDashboard, end: true },
+  { key: 'admin.nav.rumors',    to: '/admin/rumors',   Icon: Flag },
+  { key: 'admin.nav.news',      to: '/admin/news',     Icon: Newspaper },
+  { key: 'admin.nav.reports',   to: '/admin/reports',  Icon: FileBarChart },
+  { key: 'admin.nav.team',      to: '/admin/team',     Icon: Users2 },
   { key: 'admin.nav.pages',     to: '/admin/pages',    Icon: FileText },
   { key: 'admin.nav.posts',     to: '/admin/posts',    Icon: NotebookPen },
   { key: 'admin.nav.media',     to: '/admin/media',    Icon: Image },

@@ -194,17 +194,29 @@
     "noData": "لا توجد بيانات",
     "edit": "تعديل",
     "delete": "حذف",
+    "view": "عرض",
     "addNew": "إضافة جديد",
     "editItem": "تعديل العنصر",
     "save": "حفظ",
+    "saved": "تم الحفظ بنجاح",
+    "saving": "جاري الحفظ...",
+    "loading": "جاري التحميل...",
     "cancel": "إلغاء",
     "confirmDelete": "هل أنت متأكد من حذف هذا العنصر؟",
+    "yes": "نعم، احذف",
+    "messages": {
+      "saveSuccess": "تم حفظ التغييرات بنجاح.",
+      "deleteSuccess": "تم حذف العنصر بنجاح.",
+      "uploadSuccess": "تم رفع الملف بنجاح."
+    },
     "nav": {
       "dashboard": "لوحة التحكم",
       "rumors": "الشائعات",
       "news": "الأخبار",
       "reports": "التقارير",
       "team": "الفريق",
+      "pages": "الصفحات",
+      "posts": "المنشورات",
       "media": "الوسائط",
       "settings": "الإعدادات"
     },
@@ -220,26 +232,139 @@
       "pages": "الصفحات",
       "name": "الاسم",
       "role": "الدور",
-      "email": "البريد الإلكتروني"
+      "email": "البريد الإلكتروني",
+      "source": "المصدر",
+      "location": "الموقع",
+      "featured": "مميز",
+      "fileSize": "حجم الملف",
+      "skills": "المهارات",
+      "description": "الوصف"
+    },
+    "table": {
+      "searchPlaceholder": "بحث...",
+      "clearFilters": "مسح الفلاتر",
+      "resultCount": "{{count}} نتيجة",
+      "pageOf": "صفحة {{page}} من {{total}}",
+      "from": "من",
+      "to": "إلى",
+      "searchLabel": "بحث",
+      "filters": {
+        "status": "تصفية حسب الحالة",
+        "category": "تصفية حسب التصنيف",
+        "section": "تصفية حسب القسم",
+        "mimeType": "تصفية حسب النوع",
+        "isFeatured": "تصفية حسب التمييز"
+      }
     },
     "dashboard": {
       "title": "لوحة التحكم",
-      "recentRumors": "أحدث الشائعات"
+      "recentRumors": "أحدث الشائعات",
+      "statsRumors": "الشائعات",
+      "statsNews": "الأخبار",
+      "statsReports": "التقارير",
+      "statsTeam": "أعضاء الفريق",
+      "statsPages": "الصفحات",
+      "statsPosts": "المنشورات",
+      "statsMedia": "الوسائط"
+    },
+    "contentStatus": {
+      "draft": "مسودة",
+      "published": "منشور",
+      "scheduled": "مجدول"
+    },
+    "contentCategories": {
+      "general": "عام",
+      "policy": "سياسة",
+      "faq": "أسئلة شائعة",
+      "news": "أخبار",
+      "update": "تحديث",
+      "announcement": "إعلان"
+    },
+    "form": {
+      "titleEn": "العنوان (إنجليزي)",
+      "titleAr": "العنوان (عربي)",
+      "slug": "الرابط المختصر",
+      "publishDate": "تاريخ النشر",
+      "featuredMedia": "الوسائط المميزة",
+      "noMedia": "لم يتم اختيار وسائط",
+      "excerptEn": "المقتطف (إنجليزي)",
+      "excerptAr": "المقتطف (عربي)",
+      "contentEn": "المحتوى (إنجليزي)",
+      "contentAr": "المحتوى (عربي)",
+      "rtlPreview": "معاينة النص العربي",
+      "rtlPreviewHint": "تظهر هنا معاينة المحتوى العربي.",
+      "title": "العنوان",
+      "description": "الوصف",
+      "status": "الحالة",
+      "category": "التصنيف",
+      "date": "التاريخ",
+      "source": "المصدر",
+      "verifiedAt": "تم التحقق في",
+      "location": "الموقع",
+      "isFeatured": "تحديد كمميز",
+      "tags": "الوسوم (مفصولة بفواصل)",
+      "fileSize": "حجم الملف (مثال: 2.4 MB)",
+      "pages": "عدد الصفحات",
+      "name": "الاسم الكامل",
+      "role": "المنصب / الدور",
+      "email": "البريد الإلكتروني",
+      "skills": "المهارات (مفصولة بفواصل)",
+      "initials": "الأحرف الأولى",
+      "image": "صورة الغلاف",
+      "mediaUpload": "رفع ملف",
+      "mediaUrlLink": "رابط URL",
+      "chooseFile": "انقر لرفع صورة",
+      "choosePdf": "انقر لرفع ملف PDF",
+      "document": "ملف التقرير",
+      "urlPlaceholder": "https://example.com/image.jpg",
+      "clearMedia": "إزالة"
+    },
+    "pages": {
+      "addTitle": "إضافة صفحة",
+      "editTitle": "تعديل الصفحة",
+      "viewTitle": "عرض الصفحة"
+    },
+    "posts": {
+      "addTitle": "إضافة منشور",
+      "editTitle": "تعديل المنشور",
+      "viewTitle": "عرض المنشور"
     },
     "media": {
       "dropzone": "اسحب وأفلت الملفات هنا، أو انقر للاختيار",
-      "dropzoneHint": "يدعم: JPG, PNG, WebP (الحد الأقصى: 10 MB)"
+      "dropzoneHint": "يدعم: JPG, PNG, WebP, PDF (الحد الأقصى: 10 MB)",
+      "upload": "رفع ملف",
+      "preview": "معاينة الوسائط",
+      "fileName": "اسم الملف",
+      "fileType": "النوع",
+      "fileSize": "الحجم",
+      "attachedTo": "مرفق بـ",
+      "notAttached": "غير مرفق",
+      "image": "صورة",
+      "file": "ملف",
+      "invalidType": "نوع الملف غير مدعوم.",
+      "invalidSize": "الملف يتجاوز 10 MB."
     },
     "settings": {
-      "siteSection": "معلومات الموقع",
-      "siteName": "اسم الموقع",
-      "siteEmail": "البريد الإلكتروني للتواصل",
-      "siteDesc": "وصف الموقع",
-      "announcementSection": "شريط الإعلانات",
-      "announcementText": "نص الإعلان",
-      "announcementShow": "إظهار شريط الإعلانات",
-      "save": "حفظ الإعدادات",
-      "saved": "تم حفظ الإعدادات بنجاح!"
+      "addTitle": "إضافة إعداد",
+      "editTitle": "تعديل الإعداد",
+      "viewTitle": "عرض الإعداد",
+      "section": "القسم",
+      "key": "المفتاح",
+      "valueEn": "القيمة (إنجليزي)",
+      "valueAr": "القيمة (عربي)"
+    },
+    "settingsSections": {
+      "site": "الموقع",
+      "announcement": "الإعلانات",
+      "notifications": "الإشعارات"
+    },
+    "settingsStatus": {
+      "active": "نشط",
+      "inactive": "غير نشط"
+    },
+    "validation": {
+      "required": "هذا الحقل مطلوب.",
+      "slug": "يجب أن يحتوي الرابط على أحرف صغيرة وأرقام وشرطات فقط."
     }
   }
 }

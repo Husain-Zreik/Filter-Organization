@@ -1,32 +1,28 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { SlidersHorizontal, ArrowLeft, Info, Lock, Mail } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import ContentCard from '../components/features/ContentCard'
-import { rumors, news, reports, teamMembers, quickLinks } from '../data/mockData'
-
-const homepageCards = [
-  { id: 'r1',  ...rumors[0],  type: 'rumor',  href: '/rumors' },
-  { id: 'n1',  ...news[1],    type: 'news',   href: '/news',    status: undefined },
-  { id: 'rp1', ...reports[1], type: 'report', href: '/reports', status: undefined },
-  { id: 'r2',  ...rumors[2],  type: 'rumor',  href: '/rumors' },
-  { id: 'n2',  ...news[2],    type: 'news',   href: '/news',    status: undefined },
-  {
-    id: 't1',
-    title: teamMembers[0].name,
-    description: teamMembers[0].description,
-    category: teamMembers[0].role,
-    date: '',
-    image: 'https://placehold.co/640x360/00334a/ffffff?text=فريق+العمل',
-    type: 'team',
-    href: '/team',
-    status: undefined,
-  },
-]
+import DetailModal from '../components/ui/DetailModal'
+import { quickLinks } from '../data/mockData'
+import { useAdminData } from '../admin/context/AdminDataContext'
 
 const quickLinkIcons = { Info, Lock, Mail }
 
 export default function HomePage() {
   const { t } = useTranslation()
+  const { rumors, news, reports } = useAdminData()
+  const [selected, setSelected] = useState(null)
+
+  // Build homepage cards from live context data (first items of each type)
+  const homepageCards = [
+    rumors[0]  ? { id: 'r1',  ...rumors[0],  type: 'rumor',  href: '/rumors'  } : null,
+    news[1]    ? { id: 'n1',  ...news[1],    type: 'news',   href: '/news',   status: undefined } : null,
+    reports[1] ? { id: 'rp1', ...reports[1], type: 'report', href: '/reports', status: undefined } : null,
+    rumors[2]  ? { id: 'r2',  ...rumors[2],  type: 'rumor',  href: '/rumors'  } : null,
+    news[2]    ? { id: 'n2',  ...news[2],    type: 'news',   href: '/news',   status: undefined } : null,
+    reports[0] ? { id: 'rp2', ...reports[0], type: 'report', href: '/reports', status: undefined } : null,
+  ].filter(Boolean)
 
   return (
     <div>
@@ -71,9 +67,9 @@ export default function HomePage() {
           {/* Stats */}
           <div className="grid grid-cols-3 gap-6 mt-14 max-w-sm mx-auto md:max-w-md">
             {[
-              { value: t('home.stat1Value'), label: t('home.stat1Label') },
-              { value: t('home.stat2Value'), label: t('home.stat2Label') },
-              { value: t('home.stat3Value'), label: t('home.stat3Label') },
+              { value: rumors.length || t('home.stat1Value'), label: t('home.stat1Label') },
+              { value: t('home.stat2Value'),                  label: t('home.stat2Label') },
+              { value: t('home.stat3Value'),                  label: t('home.stat3Label') },
             ].map((stat) => (
               <div key={stat.label} className="text-center">
                 <div className="text-2xl font-extrabold text-accent">{stat.value}</div>
@@ -103,7 +99,7 @@ export default function HomePage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {homepageCards.map((item) => (
-              <ContentCard key={item.id} item={item} />
+              <ContentCard key={item.id} item={item} onClick={() => setSelected(item)} />
             ))}
           </div>
         </div>
@@ -139,6 +135,13 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <DetailModal
+        isOpen={Boolean(selected)}
+        onClose={() => setSelected(null)}
+        item={selected}
+        type={selected?.type ?? 'rumor'}
+      />
     </div>
   )
 }

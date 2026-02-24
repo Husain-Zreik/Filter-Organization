@@ -210,6 +210,10 @@
     },
     "nav": {
       "dashboard": "Dashboard",
+      "rumors": "Rumors",
+      "news": "News",
+      "reports": "Reports",
+      "team": "Team",
       "pages": "Pages",
       "posts": "Posts",
       "media": "Media",
@@ -227,25 +231,40 @@
       "pages": "Pages",
       "name": "Name",
       "role": "Role",
-      "email": "Email"
+      "email": "Email",
+      "source": "Source",
+      "location": "Location",
+      "featured": "Featured",
+      "fileSize": "File Size",
+      "skills": "Skills",
+      "description": "Description"
     },
     "table": {
       "searchPlaceholder": "Search...",
       "clearFilters": "Clear filters",
       "resultCount": "{{count}} result(s)",
       "pageOf": "Page {{page}} of {{total}}",
-      "from": "From date",
-      "to": "To date",
+      "from": "From",
+      "to": "To",
+      "searchLabel": "Search",
       "filters": {
         "status": "Filter by status",
         "category": "Filter by category",
         "section": "Filter by section",
-        "mimeType": "Filter by type"
+        "mimeType": "Filter by type",
+        "isFeatured": "Filter by featured"
       }
     },
     "dashboard": {
       "title": "Dashboard",
-      "recentRumors": "Recent Posts"
+      "recentRumors": "Recent Rumors",
+      "statsRumors": "Rumors",
+      "statsNews": "News",
+      "statsReports": "Reports",
+      "statsTeam": "Team Members",
+      "statsPages": "Pages",
+      "statsPosts": "Posts",
+      "statsMedia": "Media"
     },
     "contentStatus": {
       "draft": "Draft",
@@ -272,7 +291,32 @@
       "contentEn": "Content (English)",
       "contentAr": "Content (Arabic)",
       "rtlPreview": "Arabic RTL Preview",
-      "rtlPreviewHint": "Arabic content preview appears here."
+      "rtlPreviewHint": "Arabic content preview appears here.",
+      "title": "Title",
+      "description": "Description",
+      "status": "Status",
+      "category": "Category",
+      "date": "Date",
+      "source": "Source",
+      "verifiedAt": "Verified At",
+      "location": "Location",
+      "isFeatured": "Mark as Featured",
+      "tags": "Tags (comma-separated)",
+      "fileSize": "File Size (e.g. 2.4 MB)",
+      "pages": "Number of Pages",
+      "name": "Full Name",
+      "role": "Role / Position",
+      "email": "Email Address",
+      "skills": "Skills (comma-separated)",
+      "initials": "Initials",
+      "image": "Cover Image",
+      "mediaUpload": "Upload",
+      "mediaUrlLink": "URL / Link",
+      "chooseFile": "Click to upload image",
+      "choosePdf": "Click to upload PDF document",
+      "document": "Report Document",
+      "urlPlaceholder": "https://example.com/image.jpg",
+      "clearMedia": "Remove"
     },
     "pages": {
       "addTitle": "Add Page",

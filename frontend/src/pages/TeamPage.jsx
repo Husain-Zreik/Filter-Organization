@@ -1,10 +1,11 @@
 import { Users, UserPlus, Mail } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import TeamCard from '../components/features/TeamCard'
-import { teamMembers } from '../data/mockData'
+import { useAdminData } from '../admin/context/AdminDataContext'
 
 export default function TeamPage() {
   const { t } = useTranslation()
+  const { teamMembers } = useAdminData()
 
   return (
     <div className="py-10 px-4">

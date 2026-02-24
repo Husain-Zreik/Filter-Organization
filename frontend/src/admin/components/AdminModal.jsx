@@ -30,7 +30,7 @@ export default function AdminModal({ isOpen, title, onClose, children }) {
       />
 
       {/* Panel */}
-      <div className="relative z-10 bg-white rounded-2xl shadow-xl w-full max-w-lg max-h-[90vh] flex flex-col">
+      <div className="relative z-10 bg-white rounded-2xl shadow-xl w-full max-w-2xl max-h-[92vh] flex flex-col">
         {/* Header */}
         <div className="flex items-center justify-between px-5 py-4 border-b border-[#00334a]/8">
           <h2 className="font-bold text-primary text-base">{title}</h2>

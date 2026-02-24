@@ -3,7 +3,8 @@ import { Zap, Clock, Shield, TrendingUp, Heart, BookOpen } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import NewsCard from '../components/features/NewsCard'
 import DetailModal from '../components/ui/DetailModal'
-import { news, newsTicker, newsSummary } from '../data/mockData'
+import { newsTicker, newsSummary } from '../data/mockData'
+import { useAdminData } from '../admin/context/AdminDataContext'
 
 const tickerDotColor = {
   confirmed:  'bg-[#2e7d32]',
@@ -15,6 +16,7 @@ const summaryIconMap = { TrendingUp, Heart, Shield, BookOpen }
 
 export default function NewsPage() {
   const { t } = useTranslation()
+  const { news } = useAdminData()
   const [selected, setSelected] = useState(null)
 
   const featured = news.find((n) => n.isFeatured)

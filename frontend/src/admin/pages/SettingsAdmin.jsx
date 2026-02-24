@@ -3,29 +3,9 @@ import { useTranslation } from 'react-i18next'
 import { Plus } from 'lucide-react'
 import AdminModal from '../components/AdminModal'
 import AdminDataTable from '../components/AdminDataTable'
-import SettingsEditorForm from '../components/SettingsEditorForm'
+import SettingsEditorForm from '../forms/SettingsEditorForm'
+import SettingPreview from '../previews/SettingPreview'
 import { useAdminData } from '../context/AdminDataContext'
-
-function SettingPreview({ row }) {
-  const { t } = useTranslation()
-  if (!row) return null
-  return (
-    <div className="space-y-4">
-      <div>
-        <h3 className="text-sm font-bold text-primary mb-1">{t('admin.form.titleEn')}</h3>
-        <p className="text-sm text-secondary">{row.titleEn}</p>
-      </div>
-      <div>
-        <h3 className="text-sm font-bold text-primary mb-1">{t('admin.form.titleAr')}</h3>
-        <p dir="rtl" className="text-sm text-secondary">{row.titleAr}</p>
-      </div>
-      <div>
-        <h3 className="text-sm font-bold text-primary mb-1">{t('admin.settings.valueAr')}</h3>
-        <p dir="rtl" className="text-sm text-secondary whitespace-pre-wrap">{row.valueAr}</p>
-      </div>
-    </div>
-  )
-}
 
 export default function SettingsAdmin() {
   const { t } = useTranslation()
@@ -39,10 +19,19 @@ export default function SettingsAdmin() {
   const columns = useMemo(
     () => [
       { key: 'section', label: t('admin.settings.section'), sortable: true, render: (val) => t(`admin.settingsSections.${val}`) },
-      { key: 'titleEn', label: t('admin.form.titleEn'), sortable: true },
-      { key: 'titleAr', label: t('admin.form.titleAr'), sortable: true, render: (val) => <span dir="rtl">{val}</span> },
-      { key: 'status', label: t('admin.col.status'), sortable: true, render: (val) => t(`admin.settingsStatus.${val}`) },
-      { key: 'updatedAt', label: t('admin.col.date'), sortable: true },
+      {
+        key: 'titleAr',
+        label: t('admin.col.title'),
+        sortable: true,
+        render: (val, row) => (
+          <div>
+            <p dir="rtl" className="text-sm font-medium text-primary truncate max-w-[200px]">{val}</p>
+            {row.titleEn && <p className="text-[11px] text-secondary/50 truncate max-w-[200px]">{row.titleEn}</p>}
+          </div>
+        ),
+      },
+      { key: 'status',    label: t('admin.col.status'), sortable: true, render: (val) => t(`admin.settingsStatus.${val}`) },
+      { key: 'updatedAt', label: t('admin.col.date'),   sortable: true },
     ],
     [t],
   )

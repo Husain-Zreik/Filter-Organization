@@ -3,10 +3,11 @@ import { Flag } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import RumorCard from '../components/features/RumorCard'
 import DetailModal from '../components/ui/DetailModal'
-import { rumors, archiveStats } from '../data/mockData'
+import { useAdminData } from '../admin/context/AdminDataContext'
 
 export default function RumorsPage() {
   const { t } = useTranslation()
+  const { rumors } = useAdminData()
   const [activeFilter, setActiveFilter] = useState('')
   const [selected, setSelected] = useState(null)
 
@@ -20,6 +21,13 @@ export default function RumorsPage() {
   const filtered = activeFilter
     ? rumors.filter((r) => r.status === activeFilter)
     : rumors
+
+  const counts = {
+    total:      rumors.length,
+    false:      rumors.filter((r) => r.status === 'false').length,
+    confirmed:  rumors.filter((r) => r.status === 'confirmed').length,
+    unverified: rumors.filter((r) => r.status === 'unverified').length,
+  }
 
   return (
     <div className="py-10 px-4">
@@ -78,10 +86,10 @@ export default function RumorsPage() {
               </h3>
               <div className="space-y-3">
                 {[
-                  { label: t('rumors.totalLabel'),     value: archiveStats.total.count,     color: 'text-primary'   },
-                  { label: t('rumors.falseLabel'),      value: archiveStats.false.count,     color: 'text-[#c62828]' },
-                  { label: t('rumors.confirmedLabel'),  value: archiveStats.confirmed.count, color: 'text-[#2e7d32]' },
-                  { label: t('rumors.unverifiedLabel'), value: 32,                           color: 'text-[#f9a825]' },
+                  { label: t('rumors.totalLabel'),     value: counts.total,      color: 'text-primary'   },
+                  { label: t('rumors.falseLabel'),      value: counts.false,      color: 'text-[#c62828]' },
+                  { label: t('rumors.confirmedLabel'),  value: counts.confirmed,  color: 'text-[#2e7d32]' },
+                  { label: t('rumors.unverifiedLabel'), value: counts.unverified, color: 'text-[#f9a825]' },
                 ].map((stat) => (
                   <div key={stat.label} className="flex items-center justify-between">
                     <span className="text-xs text-secondary opacity-70">{stat.label}</span>

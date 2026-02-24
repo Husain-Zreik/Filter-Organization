@@ -4,13 +4,7 @@ import { useTranslation } from 'react-i18next'
 import Button from '../components/ui/Button'
 import ContentCard from '../components/features/ContentCard'
 import DetailModal from '../components/ui/DetailModal'
-import { rumors, news, reports } from '../data/mockData'
-
-const allContent = [
-  ...rumors.map((r) => ({ ...r, type: 'rumor',  href: '/rumors'  })),
-  ...news.map((n)   => ({ ...n, type: 'news',   href: '/news',   status: undefined })),
-  ...reports.map((r)=> ({ ...r, type: 'report', href: '/reports', status: undefined })),
-]
+import { useAdminData } from '../admin/context/AdminDataContext'
 
 const initialFilters = { type: '', status: '', category: '', date: '' }
 
@@ -39,9 +33,16 @@ function SelectField({ name, label, options, value, onChange }) {
 
 export default function FilterToolPage() {
   const { t } = useTranslation()
+  const { rumors, news, reports } = useAdminData()
   const [filters, setFilters] = useState(initialFilters)
   const [applied, setApplied] = useState(false)
   const [selected, setSelected] = useState(null)
+
+  const allContent = [
+    ...rumors.map((r) => ({ ...r, type: 'rumor',  href: '/rumors'  })),
+    ...news.map((n)   => ({ ...n, type: 'news',   href: '/news',   status: undefined })),
+    ...reports.map((r)=> ({ ...r, type: 'report', href: '/reports', status: undefined })),
+  ]
 
   const handleChange = (e) => {
     setFilters((prev) => ({ ...prev, [e.target.name]: e.target.value }))
@@ -100,6 +101,8 @@ export default function FilterToolPage() {
                 { value: 'security',  label: t('categories.security')  },
                 { value: 'economy',   label: t('categories.economy')   },
                 { value: 'education', label: t('categories.education') },
+                { value: 'tech',      label: t('categories.tech')      },
+                { value: 'media',     label: t('categories.media')     },
               ]}
             />
             <div className="flex flex-col gap-1.5">

@@ -1,0 +1,5 @@
+export const RUMOR_CATEGORIES  = ['health', 'security', 'economy', 'education', 'tech', 'media']
+export const NEWS_CATEGORIES   = ['security', 'tech', 'media', 'training', 'health', 'economy', 'education', 'culture']
+export const REPORT_CATEGORIES = ['health', 'security', 'economy', 'education', 'tech', 'periodic']
+export const PAGE_CATEGORIES   = ['general', 'policy', 'faq']
+export const POST_CATEGORIES   = ['news', 'update', 'announcement']

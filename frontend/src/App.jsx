@@ -16,40 +16,48 @@ import PagesAdmin from './admin/pages/PagesAdmin'
 import PostsAdmin from './admin/pages/PostsAdmin'
 import MediaAdmin from './admin/pages/MediaAdmin'
 import SettingsAdmin from './admin/pages/SettingsAdmin'
+import RumorsAdmin from './admin/pages/RumorsAdmin'
+import NewsAdmin from './admin/pages/NewsAdmin'
+import ReportsAdmin from './admin/pages/ReportsAdmin'
+import TeamAdmin from './admin/pages/TeamAdmin'
 import { AdminDataProvider } from './admin/context/AdminDataContext'
 
 export default function App() {
   return (
-    <Routes>
-      {/* Public site */}
-      <Route path="/" element={<Layout />}>
-        <Route index element={<HomePage />} />
-        <Route path="filter" element={<FilterToolPage />} />
-        <Route path="rumors" element={<RumorsPage />} />
-        <Route path="news" element={<NewsPage />} />
-        <Route path="reports" element={<ReportsPage />} />
-        <Route path="archive" element={<ArchivePage />} />
-        <Route path="team" element={<TeamPage />} />
-        <Route path="more" element={<MorePage />} />
-      </Route>
+    <AdminDataProvider>
+      <Routes>
+        {/* Public site */}
+        <Route path="/" element={<Layout />}>
+          <Route index element={<HomePage />} />
+          <Route path="filter" element={<FilterToolPage />} />
+          <Route path="rumors" element={<RumorsPage />} />
+          <Route path="news" element={<NewsPage />} />
+          <Route path="reports" element={<ReportsPage />} />
+          <Route path="archive" element={<ArchivePage />} />
+          <Route path="team" element={<TeamPage />} />
+          <Route path="more" element={<MorePage />} />
+        </Route>
 
-      {/* Admin dashboard */}
-      <Route
-        path="/admin"
-        element={
-          <AdminDataProvider>
+        {/* Admin dashboard */}
+        <Route
+          path="/admin"
+          element={
             <AdminGuard>
               <AdminLayout />
             </AdminGuard>
-          </AdminDataProvider>
-        }
-      >
-        <Route index element={<DashboardHome />} />
-        <Route path="pages"    element={<PagesAdmin />} />
-        <Route path="posts"    element={<PostsAdmin />} />
-        <Route path="media"    element={<MediaAdmin />} />
-        <Route path="settings" element={<SettingsAdmin />} />
-      </Route>
-    </Routes>
+          }
+        >
+          <Route index element={<DashboardHome />} />
+          <Route path="rumors"   element={<RumorsAdmin />} />
+          <Route path="news"     element={<NewsAdmin />} />
+          <Route path="reports"  element={<ReportsAdmin />} />
+          <Route path="team"     element={<TeamAdmin />} />
+          <Route path="pages"    element={<PagesAdmin />} />
+          <Route path="posts"    element={<PostsAdmin />} />
+          <Route path="media"    element={<MediaAdmin />} />
+          <Route path="settings" element={<SettingsAdmin />} />
+        </Route>
+      </Routes>
+    </AdminDataProvider>
   )
 }
