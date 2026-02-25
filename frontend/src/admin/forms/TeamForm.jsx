@@ -6,11 +6,15 @@ import { INPUT_CLS, LABEL_CLS } from '../../constants/styles'
 export default function TeamForm({ initialData, onSubmit, onCancel }) {
   const { t } = useTranslation()
   const fileRef = useRef(null)
-  const [imageUrl, setImageUrl] = useState(initialData?.image ?? '')
+  const [imageUrl,  setImageUrl]  = useState(initialData?.image ?? '')
+  const [imageFile, setImageFile] = useState(null)
 
   function handleFile(e) {
     const file = e.target.files?.[0]
-    if (file) setImageUrl(URL.createObjectURL(file))
+    if (file) {
+      setImageFile(file)
+      setImageUrl(URL.createObjectURL(file))
+    }
   }
 
   function handleSave(e) {
@@ -21,11 +25,11 @@ export default function TeamForm({ initialData, onSubmit, onCancel }) {
       ...raw,
       skills: raw.skills ? raw.skills.split(',').map((s) => s.trim()).filter(Boolean) : [],
     }
-    const image = imageUrl || `https://placehold.co/200x200/00334a/ffffff?text=${raw.initials || '؟'}`
+    const image = imageUrl || ''
     if (initialData) {
-      onSubmit({ ...initialData, ...data, image })
+      onSubmit({ ...initialData, ...data, image, _imageFile: imageFile })
     } else {
-      onSubmit({ ...data, id: Date.now(), image })
+      onSubmit({ ...data, id: Date.now(), image, _imageFile: imageFile })
     }
   }
 
@@ -71,7 +75,7 @@ export default function TeamForm({ initialData, onSubmit, onCancel }) {
             <img src={imageUrl} alt="preview" className="w-full h-full object-cover"
               onError={(e) => { e.currentTarget.style.display = 'none' }} />
             <button type="button"
-              onClick={() => { setImageUrl(''); if (fileRef.current) fileRef.current.value = '' }}
+              onClick={() => { setImageUrl(''); setImageFile(null); if (fileRef.current) fileRef.current.value = '' }}
               className="absolute top-1 end-1 p-1 bg-white/90 rounded-full shadow hover:bg-white transition-colors">
               <X size={10} />
             </button>

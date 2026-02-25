@@ -8,7 +8,7 @@ import { useAdminModal } from '../../hooks/useAdminModal'
 
 export default function TeamAdmin() {
   const { t } = useTranslation()
-  const { teamMembers, saveTeamMember, deleteTeamMember } = useAdminData()
+  const { loading, teamMembers, saveTeamMember, deleteTeamMember } = useAdminData()
   const { mode, selected, isOpen, openCreate, openEdit, close } = useAdminModal()
 
   const columns = [
@@ -27,13 +27,18 @@ export default function TeamAdmin() {
     },
   ]
 
-  function handleDelete(row) {
-    if (window.confirm(t('admin.confirmDelete'))) deleteTeamMember(row.id)
+  async function handleDelete(row) {
+    if (!window.confirm(t('admin.confirmDelete'))) return
+    try { await deleteTeamMember(row.id) } catch (err) { alert(err.response?.data?.message || 'Delete failed') }
   }
 
-  function handleSubmit(data) {
-    saveTeamMember(data)
-    close()
+  async function handleSubmit(data) {
+    try {
+      await saveTeamMember(data)
+      close()
+    } catch (err) {
+      alert(err.response?.data?.message || 'Save failed. Please try again.')
+    }
   }
 
   return (
@@ -54,6 +59,7 @@ export default function TeamAdmin() {
         searchKeys={['name', 'role', 'email', 'description']}
         filterConfig={{}}
         dateKey=""
+        loading={loading}
         onEdit={openEdit}
         onDelete={handleDelete}
       />

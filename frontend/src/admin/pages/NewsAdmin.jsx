@@ -9,7 +9,7 @@ import { NEWS_CATEGORIES } from '../../constants/categories'
 
 export default function NewsAdmin() {
   const { t } = useTranslation()
-  const { news, saveNews, deleteNews } = useAdminData()
+  const { loading, news, saveNews, deleteNews } = useAdminData()
   const { mode, selected, isOpen, openCreate, openEdit, close } = useAdminModal()
 
   const columns = [
@@ -30,13 +30,18 @@ export default function NewsAdmin() {
     ],
   }
 
-  function handleDelete(row) {
-    if (window.confirm(t('admin.confirmDelete'))) deleteNews(row.id)
+  async function handleDelete(row) {
+    if (!window.confirm(t('admin.confirmDelete'))) return
+    try { await deleteNews(row.id) } catch (err) { alert(err.response?.data?.message || 'Delete failed') }
   }
 
-  function handleSubmit(data) {
-    saveNews(data)
-    close()
+  async function handleSubmit(data) {
+    try {
+      await saveNews(data)
+      close()
+    } catch (err) {
+      alert(err.response?.data?.message || 'Save failed. Please try again.')
+    }
   }
 
   return (
@@ -57,6 +62,7 @@ export default function NewsAdmin() {
         searchKeys={['title', 'description', 'location']}
         filterConfig={filterConfig}
         dateKey="publishDate"
+        loading={loading}
         onEdit={openEdit}
         onDelete={handleDelete}
       />

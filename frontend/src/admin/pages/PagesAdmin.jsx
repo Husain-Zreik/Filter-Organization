@@ -9,7 +9,7 @@ import { useAdminData } from '../context/AdminDataContext'
 
 export default function PagesAdmin() {
   const { t } = useTranslation()
-  const { pages, savePage, deletePage } = useAdminData()
+  const { loading: dataLoading, pages, savePage, deletePage } = useAdminData()
   const [modalMode, setModalMode] = useState('')
   const [selected, setSelected]   = useState(null)
   const [feedback, setFeedback]   = useState('')
@@ -58,17 +58,25 @@ export default function PagesAdmin() {
 
   async function handleSave(data) {
     setLoading(true)
-    await Promise.resolve()
-    savePage(data)
-    setFeedback(t('admin.messages.saveSuccess'))
-    setLoading(false)
-    closeModal()
+    try {
+      await savePage(data)
+      setFeedback(t('admin.messages.saveSuccess'))
+      closeModal()
+    } catch (err) {
+      setFeedback(err.response?.data?.message || 'Save failed. Please try again.')
+    } finally {
+      setLoading(false)
+    }
   }
 
-  function handleDelete(row) {
+  async function handleDelete(row) {
     if (!window.confirm(t('admin.confirmDelete'))) return
-    deletePage(row.id)
-    setFeedback(t('admin.messages.deleteSuccess'))
+    try {
+      await deletePage(row.id)
+      setFeedback(t('admin.messages.deleteSuccess'))
+    } catch (err) {
+      setFeedback(err.response?.data?.message || 'Delete failed.')
+    }
   }
 
   return (
@@ -95,7 +103,7 @@ export default function PagesAdmin() {
         searchKeys={['titleEn', 'titleAr', 'slug']}
         filterConfig={filterConfig}
         dateKey="publishDate"
-        loading={loading}
+        loading={dataLoading}
         onView={openView}
         onEdit={openEdit}
         onDelete={handleDelete}

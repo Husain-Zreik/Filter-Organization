@@ -77,6 +77,7 @@ export default function ContentEditorForm({
   const [lang, setLang]         = useState('ar')
   const [mediaTab, setMediaTab] = useState('upload')
   const [urlInput, setUrlInput] = useState(initialData?.mediaUrl ?? initialData?.image ?? '')
+  const [mediaFile, setMediaFile] = useState(null)
 
   const [values, setValues] = useState(() => ({
     id:          initialData?.id          ?? `${mode}-${Date.now()}`,
@@ -114,6 +115,7 @@ export default function ContentEditorForm({
   function handleFileChange(e) {
     const file = e.target.files?.[0]
     if (!file) return
+    setMediaFile(file)
     const objectUrl = URL.createObjectURL(file)
     handleChange('mediaUrl', objectUrl)
   }
@@ -123,6 +125,7 @@ export default function ContentEditorForm({
   }
 
   function clearMedia() {
+    setMediaFile(null)
     handleChange('mediaUrl', '')
     setUrlInput('')
     if (fileInputRef.current) fileInputRef.current.value = ''
@@ -142,8 +145,9 @@ export default function ContentEditorForm({
     await Promise.resolve()
     onSubmit({
       ...values,
-      image: values.mediaUrl || undefined,
-      updatedAt: new Date().toISOString().slice(0, 10),
+      image:      values.mediaUrl || undefined,
+      _mediaFile: mediaFile,
+      updatedAt:  new Date().toISOString().slice(0, 10),
     })
     setSaving(false)
     setMessage(t('admin.saved'))

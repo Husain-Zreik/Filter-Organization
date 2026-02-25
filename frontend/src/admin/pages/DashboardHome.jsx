@@ -2,11 +2,12 @@ import { useTranslation } from 'react-i18next'
 import { Flag, Newspaper, FileBarChart, Users2, NotebookPen, Image } from 'lucide-react'
 import StatusBadge from '../../components/ui/StatusBadge'
 import AdminDataTable from '../components/AdminDataTable'
+import { SkeletonStatCard } from '../../components/ui/Skeleton'
 import { useAdminData } from '../context/AdminDataContext'
 
 export default function DashboardHome() {
   const { t } = useTranslation()
-  const { rumors, news, reports, teamMembers, posts, media } = useAdminData()
+  const { loading, rumors, news, reports, teamMembers, posts, media } = useAdminData()
 
   const stats = [
     { labelKey: 'admin.dashboard.statsRumors',  value: rumors.length,      Icon: Flag,         color: 'bg-[#c62828]/10 text-[#c62828]' },
@@ -38,15 +39,19 @@ export default function DashboardHome() {
 
       {/* Stat cards */}
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 xl:grid-cols-6 gap-4 mb-8">
-        {stats.map(({ labelKey, value, Icon, color }) => (
-          <div key={labelKey} className="bg-white rounded-2xl border border-[#00334a]/8 shadow-sm p-4">
-            <div className={`p-2 rounded-xl w-fit mb-2 ${color}`}>
-              <Icon size={16} />
+        {loading ? (
+          Array.from({ length: 6 }).map((_, i) => <SkeletonStatCard key={i} />)
+        ) : (
+          stats.map(({ labelKey, value, Icon, color }) => (
+            <div key={labelKey} className="bg-white rounded-2xl border border-[#00334a]/8 shadow-sm p-4">
+              <div className={`p-2 rounded-xl w-fit mb-2 ${color}`}>
+                <Icon size={16} />
+              </div>
+              <div className="text-2xl font-extrabold text-primary">{value}</div>
+              <div className="text-xs text-secondary opacity-65 mt-1 leading-tight">{t(labelKey)}</div>
             </div>
-            <div className="text-2xl font-extrabold text-primary">{value}</div>
-            <div className="text-xs text-secondary opacity-65 mt-1 leading-tight">{t(labelKey)}</div>
-          </div>
-        ))}
+          ))
+        )}
       </div>
 
       {/* Recent rumors */}
@@ -55,7 +60,7 @@ export default function DashboardHome() {
           <h2 className="font-bold text-primary text-sm">{t('admin.dashboard.recentRumors')}</h2>
         </div>
         <div className="p-4">
-          <AdminDataTable columns={recentColumns} rows={recentRumors} filterConfig={{}} searchKeys={[]} />
+          <AdminDataTable columns={recentColumns} rows={recentRumors} filterConfig={{}} searchKeys={[]} loading={loading} />
         </div>
       </div>
     </div>

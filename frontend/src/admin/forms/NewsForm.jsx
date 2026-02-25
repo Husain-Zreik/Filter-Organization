@@ -7,18 +7,22 @@ import { NEWS_CATEGORIES } from '../../constants/categories'
 export default function NewsForm({ initialData, onSubmit, onCancel }) {
   const { t } = useTranslation()
   const fileRef = useRef(null)
-  const [imageUrl, setImageUrl] = useState(initialData?.image ?? '')
+  const [imageUrl,  setImageUrl]  = useState(initialData?.image ?? '')
+  const [imageFile, setImageFile] = useState(null)
 
   function handleFile(e) {
     const file = e.target.files?.[0]
-    if (file) setImageUrl(URL.createObjectURL(file))
+    if (file) {
+      setImageFile(file)
+      setImageUrl(URL.createObjectURL(file))
+    }
   }
 
   function handleSave(e) {
     e.preventDefault()
     const fd    = new FormData(e.target)
     const raw   = Object.fromEntries(fd.entries())
-    const image = imageUrl || 'https://placehold.co/800x450/00334a/ffffff?text=خبر'
+    const image = imageUrl || ''
     const data  = {
       ...raw,
       isFeatured: fd.has('isFeatured'),
@@ -26,9 +30,9 @@ export default function NewsForm({ initialData, onSubmit, onCancel }) {
       publishDate: raw.date,
     }
     if (initialData) {
-      onSubmit({ ...initialData, ...data, image })
+      onSubmit({ ...initialData, ...data, image, _imageFile: imageFile })
     } else {
-      onSubmit({ ...data, id: Date.now(), image, categoryColor: 'bg-[#00334a]/10 text-[#00334a]' })
+      onSubmit({ ...data, id: Date.now(), image, _imageFile: imageFile })
     }
   }
 
@@ -90,7 +94,7 @@ export default function NewsForm({ initialData, onSubmit, onCancel }) {
             <img src={imageUrl} alt="preview" className="w-full h-full object-cover"
               onError={(e) => { e.currentTarget.style.display = 'none' }} />
             <button type="button"
-              onClick={() => { setImageUrl(''); if (fileRef.current) fileRef.current.value = '' }}
+              onClick={() => { setImageUrl(''); setImageFile(null); if (fileRef.current) fileRef.current.value = '' }}
               className="absolute top-2 end-2 p-1.5 bg-white/90 rounded-full shadow hover:bg-white transition-colors">
               <X size={12} />
             </button>

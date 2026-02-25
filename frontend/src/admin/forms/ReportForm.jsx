@@ -15,14 +15,17 @@ export default function ReportForm({ initialData, onSubmit, onCancel }) {
   const docRef   = useRef(null)
   const imgRef   = useRef(null)
 
-  const [docUrl,  setDocUrl]  = useState(initialData?.url  ?? '')
-  const [docName, setDocName] = useState(initialData?.name ?? '')
-  const [docSize, setDocSize] = useState(initialData?.fileSize ?? '')
-  const [imageUrl, setImageUrl] = useState(initialData?.image ?? '')
+  const [docUrl,    setDocUrl]    = useState(initialData?.url      ?? '')
+  const [docName,   setDocName]   = useState(initialData?.name     ?? '')
+  const [docSize,   setDocSize]   = useState(initialData?.fileSize ?? '')
+  const [imageUrl,  setImageUrl]  = useState(initialData?.image    ?? '')
+  const [pdfFile,   setPdfFile]   = useState(null)
+  const [coverFile, setCoverFile] = useState(null)
 
   function handleDoc(e) {
     const file = e.target.files?.[0]
     if (!file) return
+    setPdfFile(file)
     setDocUrl(URL.createObjectURL(file))
     setDocName(file.name)
     setDocSize(formatBytes(file.size))
@@ -30,7 +33,10 @@ export default function ReportForm({ initialData, onSubmit, onCancel }) {
 
   function handleImg(e) {
     const file = e.target.files?.[0]
-    if (file) setImageUrl(URL.createObjectURL(file))
+    if (file) {
+      setCoverFile(file)
+      setImageUrl(URL.createObjectURL(file))
+    }
   }
 
   function handleSave(e) {
@@ -45,7 +51,9 @@ export default function ReportForm({ initialData, onSubmit, onCancel }) {
       fileType:    'PDF',
       url:         docUrl,
       fileSize:    docSize || raw.fileSize,
-      image:       imageUrl || 'https://placehold.co/800x450/00334a/ffffff?text=تقرير',
+      image:       imageUrl || '',
+      _pdfFile:    pdfFile,
+      _coverFile:  coverFile,
     }
     if (initialData) {
       onSubmit({ ...initialData, ...data })
@@ -108,7 +116,7 @@ export default function ReportForm({ initialData, onSubmit, onCancel }) {
               {docSize && <p className="text-[11px] text-secondary/60">{docSize}</p>}
             </div>
             <button type="button"
-              onClick={() => { setDocUrl(''); setDocName(''); setDocSize(''); if (docRef.current) docRef.current.value = '' }}
+              onClick={() => { setPdfFile(null); setDocUrl(''); setDocName(''); setDocSize(''); if (docRef.current) docRef.current.value = '' }}
               className="p-1.5 hover:bg-[#00334a]/8 rounded-lg transition-colors">
               <X size={14} className="text-secondary" />
             </button>
@@ -133,7 +141,7 @@ export default function ReportForm({ initialData, onSubmit, onCancel }) {
             <img src={imageUrl} alt="preview" className="w-full h-full object-cover"
               onError={(e) => { e.currentTarget.style.display = 'none' }} />
             <button type="button"
-              onClick={() => { setImageUrl(''); if (imgRef.current) imgRef.current.value = '' }}
+              onClick={() => { setCoverFile(null); setImageUrl(''); if (imgRef.current) imgRef.current.value = '' }}
               className="absolute top-2 end-2 p-1.5 bg-white/90 rounded-full shadow hover:bg-white transition-colors">
               <X size={12} />
             </button>

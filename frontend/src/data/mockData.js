@@ -1,6 +1,6 @@
-// Static public-facing data only.
-// Entity data (rumors, news, reports, team) lives in data/mock/*.js
-// and is managed through AdminDataContext.
+// Static public-facing UI helper data only.
+// Entity data (rumors, news, reports, team) is fetched from the API
+// and managed through AdminDataContext.
 
 // ─── News ticker / summary ────────────────────────────────────────────────────
 export const newsTicker = [

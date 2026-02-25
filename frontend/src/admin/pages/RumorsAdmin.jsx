@@ -11,7 +11,7 @@ import { RUMOR_STATUSES } from '../../constants/statuses'
 
 export default function RumorsAdmin() {
   const { t } = useTranslation()
-  const { rumors, saveRumor, deleteRumor } = useAdminData()
+  const { loading, rumors, saveRumor, deleteRumor } = useAdminData()
   const { mode, selected, isOpen, openCreate, openEdit, close } = useAdminModal()
 
   const columns = [
@@ -29,13 +29,18 @@ export default function RumorsAdmin() {
     category: RUMOR_CATEGORIES.map((c) => ({ value: c, label: t(`categories.${c}`) })),
   }
 
-  function handleDelete(row) {
-    if (window.confirm(t('admin.confirmDelete'))) deleteRumor(row.id)
+  async function handleDelete(row) {
+    if (!window.confirm(t('admin.confirmDelete'))) return
+    try { await deleteRumor(row.id) } catch (err) { alert(err.response?.data?.message || 'Delete failed') }
   }
 
-  function handleSubmit(data) {
-    saveRumor(data)
-    close()
+  async function handleSubmit(data) {
+    try {
+      await saveRumor(data)
+      close()
+    } catch (err) {
+      alert(err.response?.data?.message || 'Save failed. Please try again.')
+    }
   }
 
   return (
@@ -56,6 +61,7 @@ export default function RumorsAdmin() {
         searchKeys={['title', 'source', 'description']}
         filterConfig={filterConfig}
         dateKey="publishDate"
+        loading={loading}
         onEdit={openEdit}
         onDelete={handleDelete}
       />

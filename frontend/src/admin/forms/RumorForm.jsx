@@ -8,22 +8,26 @@ import { RUMOR_STATUSES } from '../../constants/statuses'
 export default function RumorForm({ initialData, onSubmit, onCancel }) {
   const { t } = useTranslation()
   const fileRef = useRef(null)
-  const [imageUrl, setImageUrl] = useState(initialData?.image ?? '')
+  const [imageUrl,  setImageUrl]  = useState(initialData?.image ?? '')
+  const [imageFile, setImageFile] = useState(null)
 
   function handleFile(e) {
     const file = e.target.files?.[0]
-    if (file) setImageUrl(URL.createObjectURL(file))
+    if (file) {
+      setImageFile(file)
+      setImageUrl(URL.createObjectURL(file))
+    }
   }
 
   function handleSave(e) {
     e.preventDefault()
     const fd    = new FormData(e.target)
     const data  = Object.fromEntries(fd.entries())
-    const image = imageUrl || 'https://placehold.co/800x450/00334a/ffffff?text=شائعة'
+    const image = imageUrl || ''
     if (initialData) {
-      onSubmit({ ...initialData, ...data, image })
+      onSubmit({ ...initialData, ...data, image, _imageFile: imageFile })
     } else {
-      onSubmit({ ...data, id: Date.now(), image })
+      onSubmit({ ...data, id: Date.now(), image, _imageFile: imageFile })
     }
   }
 
@@ -83,7 +87,7 @@ export default function RumorForm({ initialData, onSubmit, onCancel }) {
             <img src={imageUrl} alt="preview" className="w-full h-full object-cover"
               onError={(e) => { e.currentTarget.style.display = 'none' }} />
             <button type="button"
-              onClick={() => { setImageUrl(''); if (fileRef.current) fileRef.current.value = '' }}
+              onClick={() => { setImageUrl(''); setImageFile(null); if (fileRef.current) fileRef.current.value = '' }}
               className="absolute top-2 end-2 p-1.5 bg-white/90 rounded-full shadow hover:bg-white transition-colors">
               <X size={12} />
             </button>

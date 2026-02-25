@@ -9,8 +9,10 @@ import ArchivePage from './pages/ArchivePage'
 import TeamPage from './pages/TeamPage'
 import MorePage from './pages/MorePage'
 
+import { AuthProvider } from './admin/context/AuthContext'
 import AdminGuard from './admin/components/AdminGuard'
 import AdminLayout from './admin/components/AdminLayout'
+import AdminLoginPage from './admin/pages/AdminLoginPage'
 import DashboardHome from './admin/pages/DashboardHome'
 import PagesAdmin from './admin/pages/PagesAdmin'
 import PostsAdmin from './admin/pages/PostsAdmin'
@@ -24,40 +26,45 @@ import { AdminDataProvider } from './admin/context/AdminDataContext'
 
 export default function App() {
   return (
-    <AdminDataProvider>
-      <Routes>
-        {/* Public site */}
-        <Route path="/" element={<Layout />}>
-          <Route index element={<HomePage />} />
-          <Route path="filter" element={<FilterToolPage />} />
-          <Route path="rumors" element={<RumorsPage />} />
-          <Route path="news" element={<NewsPage />} />
-          <Route path="reports" element={<ReportsPage />} />
-          <Route path="archive" element={<ArchivePage />} />
-          <Route path="team" element={<TeamPage />} />
-          <Route path="more" element={<MorePage />} />
-        </Route>
+    <AuthProvider>
+      <AdminDataProvider>
+        <Routes>
+          {/* Public site */}
+          <Route path="/" element={<Layout />}>
+            <Route index element={<HomePage />} />
+            <Route path="filter"  element={<FilterToolPage />} />
+            <Route path="rumors"  element={<RumorsPage />} />
+            <Route path="news"    element={<NewsPage />} />
+            <Route path="reports" element={<ReportsPage />} />
+            <Route path="archive" element={<ArchivePage />} />
+            <Route path="team"    element={<TeamPage />} />
+            <Route path="more"    element={<MorePage />} />
+          </Route>
 
-        {/* Admin dashboard */}
-        <Route
-          path="/admin"
-          element={
-            <AdminGuard>
-              <AdminLayout />
-            </AdminGuard>
-          }
-        >
-          <Route index element={<DashboardHome />} />
-          <Route path="rumors"   element={<RumorsAdmin />} />
-          <Route path="news"     element={<NewsAdmin />} />
-          <Route path="reports"  element={<ReportsAdmin />} />
-          <Route path="team"     element={<TeamAdmin />} />
-          <Route path="pages"    element={<PagesAdmin />} />
-          <Route path="posts"    element={<PostsAdmin />} />
-          <Route path="media"    element={<MediaAdmin />} />
-          <Route path="settings" element={<SettingsAdmin />} />
-        </Route>
-      </Routes>
-    </AdminDataProvider>
+          {/* Admin login (outside guard) */}
+          <Route path="/admin/login" element={<AdminLoginPage />} />
+
+          {/* Admin dashboard (protected) */}
+          <Route
+            path="/admin"
+            element={
+              <AdminGuard>
+                <AdminLayout />
+              </AdminGuard>
+            }
+          >
+            <Route index           element={<DashboardHome />} />
+            <Route path="rumors"   element={<RumorsAdmin />} />
+            <Route path="news"     element={<NewsAdmin />} />
+            <Route path="reports"  element={<ReportsAdmin />} />
+            <Route path="team"     element={<TeamAdmin />} />
+            <Route path="pages"    element={<PagesAdmin />} />
+            <Route path="posts"    element={<PostsAdmin />} />
+            <Route path="media"    element={<MediaAdmin />} />
+            <Route path="settings" element={<SettingsAdmin />} />
+          </Route>
+        </Routes>
+      </AdminDataProvider>
+    </AuthProvider>
   )
 }

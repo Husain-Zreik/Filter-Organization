@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { ArrowUpDown, CalendarDays, ChevronDown, ChevronLeft, ChevronRight, Eye, Pencil, Search, Trash2, X } from 'lucide-react'
+import { SkeletonTableRow } from '../../components/ui/Skeleton'
 
 function normalizeDate(value) {
   if (!value) return null
@@ -215,12 +216,10 @@ export default function AdminDataTable({
             </tr>
           </thead>
           <tbody className="divide-y divide-[#00334a]/6">
-            {loading ? (
-              <tr>
-                <td colSpan={columns.length + 1} className="px-4 py-10 text-center text-xs text-secondary/50">
-                  {t('admin.loading')}
-                </td>
-              </tr>
+            {loading && rows.length === 0 ? (
+              Array.from({ length: pageSize }).map((_, i) => (
+                <SkeletonTableRow key={i} cols={columns.length} />
+              ))
             ) : pageRows.length === 0 ? (
               <tr>
                 <td colSpan={columns.length + 1} className="px-4 py-10 text-center text-xs text-secondary/50">

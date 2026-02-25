@@ -9,7 +9,7 @@ import { useAdminData } from '../context/AdminDataContext'
 
 export default function PostsAdmin() {
   const { t } = useTranslation()
-  const { posts, savePost, deletePost } = useAdminData()
+  const { loading: dataLoading, posts, savePost, deletePost } = useAdminData()
   const [modalMode, setModalMode] = useState('')
   const [selected, setSelected] = useState(null)
   const [loading, setLoading] = useState(false)
@@ -73,17 +73,25 @@ export default function PostsAdmin() {
 
   async function handleSave(data) {
     setLoading(true)
-    await Promise.resolve()
-    savePost(data)
-    setLoading(false)
-    setFeedback(t('admin.messages.saveSuccess'))
-    closeModal()
+    try {
+      await savePost(data)
+      setFeedback(t('admin.messages.saveSuccess'))
+      closeModal()
+    } catch (err) {
+      setFeedback(err.response?.data?.message || 'Save failed. Please try again.')
+    } finally {
+      setLoading(false)
+    }
   }
 
-  function handleDelete(row) {
+  async function handleDelete(row) {
     if (!window.confirm(t('admin.confirmDelete'))) return
-    deletePost(row.id)
-    setFeedback(t('admin.messages.deleteSuccess'))
+    try {
+      await deletePost(row.id)
+      setFeedback(t('admin.messages.deleteSuccess'))
+    } catch (err) {
+      setFeedback(err.response?.data?.message || 'Delete failed.')
+    }
   }
 
   return (
@@ -111,7 +119,7 @@ export default function PostsAdmin() {
         searchKeys={['titleEn', 'titleAr', 'slug', 'excerptEn', 'excerptAr']}
         filterConfig={filterConfig}
         dateKey="publishDate"
-        loading={loading}
+        loading={dataLoading}
         onView={openView}
         onEdit={openEdit}
         onDelete={handleDelete}

@@ -9,7 +9,7 @@ import { REPORT_CATEGORIES } from '../../constants/categories'
 
 export default function ReportsAdmin() {
   const { t } = useTranslation()
-  const { reports, saveReport, deleteReport } = useAdminData()
+  const { loading, reports, saveReport, deleteReport } = useAdminData()
   const { mode, selected, isOpen, openCreate, openEdit, close } = useAdminModal()
 
   const columns = [
@@ -31,13 +31,18 @@ export default function ReportsAdmin() {
     ],
   }
 
-  function handleDelete(row) {
-    if (window.confirm(t('admin.confirmDelete'))) deleteReport(row.id)
+  async function handleDelete(row) {
+    if (!window.confirm(t('admin.confirmDelete'))) return
+    try { await deleteReport(row.id) } catch (err) { alert(err.response?.data?.message || 'Delete failed') }
   }
 
-  function handleSubmit(data) {
-    saveReport(data)
-    close()
+  async function handleSubmit(data) {
+    try {
+      await saveReport(data)
+      close()
+    } catch (err) {
+      alert(err.response?.data?.message || 'Save failed. Please try again.')
+    }
   }
 
   return (
@@ -58,6 +63,7 @@ export default function ReportsAdmin() {
         searchKeys={['title', 'description']}
         filterConfig={filterConfig}
         dateKey="publishDate"
+        loading={loading}
         onEdit={openEdit}
         onDelete={handleDelete}
       />

@@ -45,7 +45,7 @@ function MediaPreview({ item }) {
 export default function MediaAdmin() {
   const { t } = useTranslation()
   const inputRef = useRef(null)
-  const { media, addMedia, deleteMedia } = useAdminData()
+  const { loading: dataLoading, media, uploadMedia, deleteMedia } = useAdminData()
 
   const [dragging, setDragging] = useState(false)
   const [loading, setLoading] = useState(false)
@@ -94,19 +94,12 @@ export default function MediaAdmin() {
         setFeedback(`${file.name}: ${t('admin.media.invalidSize')}`)
         continue
       }
-
-      const entry = {
-        id: Date.now() + Math.floor(Math.random() * 10000),
-        name: file.name,
-        sizeBytes: file.size,
-        sizeLabel: `${Math.max(1, Math.round(file.size / 1024))} KB`,
-        mimeType: file.type,
-        url: file.type.startsWith('image/') ? URL.createObjectURL(file) : '',
-        createdAt: new Date().toISOString().slice(0, 10),
-        attachedTo: [],
+      try {
+        await uploadMedia(file)
+        setFeedback(t('admin.messages.uploadSuccess'))
+      } catch (err) {
+        setFeedback(`${file.name}: ${err.response?.data?.message || t('admin.media.uploadFailed', 'Upload failed')}`)
       }
-      addMedia(entry)
-      setFeedback(t('admin.messages.uploadSuccess'))
     }
 
     setLoading(false)
@@ -118,11 +111,14 @@ export default function MediaAdmin() {
     addFiles(e.dataTransfer.files)
   }
 
-  function handleDelete(row) {
+  async function handleDelete(row) {
     if (!window.confirm(t('admin.confirmDelete'))) return
-    if (row.url?.startsWith('blob:')) URL.revokeObjectURL(row.url)
-    deleteMedia(row.id)
-    setFeedback(t('admin.messages.deleteSuccess'))
+    try {
+      await deleteMedia(row.id)
+      setFeedback(t('admin.messages.deleteSuccess'))
+    } catch (err) {
+      setFeedback(err.response?.data?.message || 'Delete failed.')
+    }
   }
 
   return (
@@ -177,7 +173,7 @@ export default function MediaAdmin() {
         searchKeys={['name']}
         filterConfig={filterConfig}
         dateKey="createdAt"
-        loading={loading}
+        loading={dataLoading}
         onView={(row) => setSelected(row)}
         onDelete={handleDelete}
       />

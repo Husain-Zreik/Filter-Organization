@@ -9,7 +9,7 @@ import { useAdminData } from '../context/AdminDataContext'
 
 export default function SettingsAdmin() {
   const { t } = useTranslation()
-  const { settings, saveSetting, deleteSetting } = useAdminData()
+  const { loading: dataLoading, settings, saveSetting, deleteSetting } = useAdminData()
 
   const [modalMode, setModalMode] = useState('')
   const [selected, setSelected] = useState(null)
@@ -73,17 +73,25 @@ export default function SettingsAdmin() {
 
   async function handleSave(entry) {
     setLoading(true)
-    await Promise.resolve()
-    saveSetting(entry)
-    setLoading(false)
-    setFeedback(t('admin.messages.saveSuccess'))
-    closeModal()
+    try {
+      await saveSetting(entry)
+      setFeedback(t('admin.messages.saveSuccess'))
+      closeModal()
+    } catch (err) {
+      setFeedback(err.response?.data?.message || 'Save failed. Please try again.')
+    } finally {
+      setLoading(false)
+    }
   }
 
-  function handleDelete(row) {
+  async function handleDelete(row) {
     if (!window.confirm(t('admin.confirmDelete'))) return
-    deleteSetting(row.id)
-    setFeedback(t('admin.messages.deleteSuccess'))
+    try {
+      await deleteSetting(row.id)
+      setFeedback(t('admin.messages.deleteSuccess'))
+    } catch (err) {
+      setFeedback(err.response?.data?.message || 'Delete failed.')
+    }
   }
 
   return (
@@ -111,7 +119,7 @@ export default function SettingsAdmin() {
         searchKeys={['key', 'titleEn', 'titleAr', 'valueEn', 'valueAr']}
         filterConfig={filterConfig}
         dateKey="updatedAt"
-        loading={loading}
+        loading={dataLoading}
         onView={openView}
         onEdit={openEdit}
         onDelete={handleDelete}
