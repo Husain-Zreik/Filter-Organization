@@ -4,6 +4,7 @@ import { SlidersHorizontal, ArrowLeft, Info, Lock, Mail } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import ContentCard from '../components/features/ContentCard'
 import DetailModal from '../components/ui/DetailModal'
+import { SkeletonCard } from '../components/ui/Skeleton'
 import { quickLinks } from '../data/mockData'
 import { useAdminData } from '../admin/context/AdminDataContext'
 
